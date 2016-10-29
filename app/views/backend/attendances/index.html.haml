@@ -1,0 +1,57 @@
+.box
+  %br
+  .col-md-8
+    %label <b>#{@attendances_count}</b> Result #{params[:controller].split('/')[1]}
+    = form_for :search, url: backend_attendances_path(params), method: 'get', html:{class: 'form-inline'} do |f|
+      .row
+        .col-md-3
+          = date_field_tag :start_at, nil, value: params[:start_at], class: 'form-control datepicker', placeholder: 'Start At'
+        .col-md-3
+          = date_field_tag :end_at, nil, value: params[:end_at], class: 'form-control datepicker',  placeholder: 'End At'
+        .col-md-4
+          .form-group
+            = text_field_tag :key, params[:key], class: 'form-control', placeholder: "Search", style: 'width: 300px'
+        .col-md-1
+          %button{type: "submit", class: "btn btn-default"} Search
+  .col-md-4
+    = link_to 'Create New', new_backend_attendance_path, class: 'btn btn-info pull-right'
+  = form_for :multiple, url: multiple_action_backend_attendances_path, method: 'get' do
+    .col-md-12
+      %br
+      = submit_tag 'Do Destroy', value: 'Do Destroy', class: 'btn btn-danger'
+    .box-body.table-responsive
+      %table.table.table-hover
+        %tr
+          %th{width: '1%'}
+            .check_all_box
+              = check_box_tag :check_all 
+          %th{width: '10%'}
+            Avatar
+          %th Nis
+          %th Fullname
+          %th Student Class
+          %th Status
+          %th Day School
+          %th{width: '15%'}
+            Action
+        - @attendances.each do |resource|
+          %tr
+            %td
+              = check_box_tag 'ids[]', resource.id
+            %td
+              = image_tag resource.try(:student).try(:avatar).url(:thumb)
+            %td
+              = resource.try(:student).try(:profile_student).try(:nis)
+            %td
+              #{resource.try(:student).try(:profile_student).try(:first_name)} #{resource.try(:student).try(:profile_student).try(:last_name)}
+            %td
+              = resource.try(:student).try(:profile_student).try(:student_class)
+            %td
+              = resource.status?
+            %td
+              = resource.created_at.strftime("%B, %d, %Y")
+            %th
+              = link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, backend_attendance_path(resource), method: 'delete', data: {confirm: "Data #{@resource_name} successfully deleted!"}, class: 'btn btn-danger btn-xs'
+
+    = paginate @attendances
+

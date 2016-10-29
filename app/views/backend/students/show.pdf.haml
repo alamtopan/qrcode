@@ -1,0 +1,20 @@
+- @profile_student = @student.profile_student
+.col-md-4.col-md-offset-4
+  .card-student
+    .header Student Card SMP N 11 Kota Sukabumi
+    .col-xs-4
+      = wicked_pdf_image_tag @student.avatar.url(:normal), class: 'avatar'
+      %h4 #{@profile_student.nis}
+      %small #{@student.created_at.strftime("%B, %d, %Y")}
+    .col-xs-5
+      .form-group
+        %strong Full Name
+        %h4 #{@profile_student.first_name} #{@profile_student.last_name}
+      .form-group
+        %strong Student Class
+        %h4 #{@profile_student.student_class}
+      .form-group
+        %strong Address
+        %h4 #{@profile_student.address}
+    .col-xs-3
+      = image_tag @student.get_barcode?, style: 'width:100%;'

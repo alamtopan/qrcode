@@ -1,0 +1,30 @@
+<div class='box box-form'>
+  <div class='container'>
+    <div class='col-md-4 col-md-offset-4'>
+      <div class='box-header'>
+        <h1>Change your password</h1>
+      </div>
+      <div class='box-content'>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.hidden_field :reset_password_token %>
+          <div class='form-group'>
+            <label>Password</label>
+            <%= f.password_field :password, class: "form-control", required: true %>
+          </div>
+          <div class='form-group'>
+            <label>Password Confirmation</label>
+            <%= f.password_field :password_confirmation, class: "form-control", required: true %>
+          </div>
+          <div class='button'>
+            <%= f.submit "Change my password", class: "btn btn-login btn-success" %>
+          </div>
+          <div class="form-group">
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,57 @@
+.box
+  %br
+  .col-md-6
+    %label <b>#{@students_count}</b> Result #{params[:controller].split('/')[1]}
+    = form_for :search, url: backend_students_path(params), method: 'get', html:{class: 'form-inline'} do |f|
+      .form-group
+        = text_field_tag :key, params[:key], class: 'form-control', placeholder: "Search", style: 'width: 300px'
+      %button{type: "submit", class: "btn btn-default"} Search
+  .col-md-6
+    = link_to 'Create New', new_backend_student_path, class: 'btn btn-info pull-right'
+  = form_for :multiple, url: multiple_action_backend_students_path, method: 'get' do
+    .col-md-12
+      %br
+      = submit_tag 'Do Destroy', value: 'Do Destroy', class: 'btn btn-danger'
+    .box-body.table-responsive
+      %table.table.table-hover
+        %tr
+          %th{width: '1%'}
+            .check_all_box
+              = check_box_tag :check_all 
+          %th{width: '8%'}
+            Qr-Code
+          %th{width: '10%'}
+            Avatar
+          %th Nis
+          %th Fullname
+          %th Class Student
+          %th{width: '30%'} Address
+          %th Phone
+          %th{width: '25%'}
+            Action
+        - @students.each do |resource|
+          %tr
+            %td
+              = check_box_tag 'ids[]', resource.id
+            %td
+              = image_tag resource.get_barcode?, style: 'width:50px;'
+            %td
+              = image_tag resource.avatar.url(:thumb)
+            %td
+              = resource.try(:profile_student).try(:nis)
+            %td
+              #{resource.try(:profile_student).try(:first_name)} #{resource.try(:profile_teacher).try(:last_name)}
+            %td
+              = resource.try(:profile_student).try(:student_class)
+            %td
+              = resource.profile_student.place_info if resource.profile_student.present?
+            %td
+              = resource.try(:profile_student).try(:phone)
+            %th
+              = link_to '<i class="fa fa-wrench" aria-hidden="true"></i> Edit'.html_safe, edit_backend_student_path(resource), class: 'btn btn-primary btn-xs'
+              = link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, backend_student_path(resource), method: 'delete', data: {confirm: "Data #{@resource_name} successfully deleted!"}, class: 'btn btn-danger btn-xs'
+              = link_to '<i class="fa fa-eye" aria-hidden="true"></i> Report'.html_safe, report_backend_students_path(id: resource), class: 'btn btn-info btn-xs'
+              = link_to "<i class='fa fa-print'></i> PRINT ID CARD".html_safe, backend_student_path(resource, format: 'pdf'), class: "btn btn-xs btn-success"
+
+    = paginate @students
+

@@ -1,0 +1,10 @@
+.box
+  .box-header
+    %b
+      = params[:action]
+      = link_to 'Back To List', backend_teachers_path, class: 'btn btn-info btn-xs pull-right'
+    %hr
+  .box-body.table-responsive
+    = form_for @teacher, url: backend_teacher_path, method: 'put' do |u|
+      = u.fields_for :profile_teacher do |f|
+        = render 'form', {f: f, u: u}

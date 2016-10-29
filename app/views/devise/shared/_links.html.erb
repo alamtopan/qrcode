@@ -1,0 +1,20 @@
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Masuk", new_session_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Daftar", new_registration_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Lupa Kata Sandi??", new_password_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Tidak menerima verifikasi email?", new_confirmation_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Tidak menerima instruksi pergantian kata sandi?", new_unlock_path(resource_name) %><br />
+<% end -%>
+

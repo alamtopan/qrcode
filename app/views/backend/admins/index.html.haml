@@ -1,0 +1,28 @@
+.box
+  .box-header
+    %b
+      Data #{params[:controller].split('/')[1]}
+      = link_to 'Create New', new_backend_admin_path, class: 'btn btn-info btn-xs pull-right'
+  .box-body.table-responsive
+    %table.table.table-hover
+      %tr
+        %th{width: '10%'}
+          Username
+        %th Email
+        %th Created At
+        %th{width: '15%'}
+          Action
+      - @admins.each do |resource|
+        %tr
+          %td
+            = resource.username
+          %td
+            = resource.email
+          %td
+            = resource.created_at.strftime("%I:%M %B, %d, %Y")
+          %th
+            = link_to '<i class="fa fa-wrench" aria-hidden="true"></i> Edit'.html_safe, edit_backend_admin_path(resource), class: 'btn btn-primary btn-xs'
+            = link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, backend_admin_path(resource), method: 'delete', data: {confirm: "Data #{@resource_name} successfully deleted!"}, class: 'btn btn-danger btn-xs'
+
+    = paginate @admins
+

@@ -1,0 +1,51 @@
+.box
+  %br
+  .col-md-6
+    %label <b>#{@teachers_count}</b> Result #{params[:controller].split('/')[1]}
+    = form_for :search, url: backend_teachers_path(params), method: 'get', html:{class: 'form-inline'} do |f|
+      .form-group
+        = text_field_tag :key, params[:key], class: 'form-control', placeholder: "Search", style: 'width: 300px'
+      %button{type: "submit", class: "btn btn-default"} Search
+  .col-md-6
+    = link_to 'Create New', new_backend_teacher_path, class: 'btn btn-info pull-right'
+  = form_for :multiple, url: multiple_action_backend_teachers_path, method: 'get' do
+    .col-md-12
+      %br
+      = submit_tag 'Do Destroy', value: 'Do Destroy', class: 'btn btn-danger'
+    .box-body.table-responsive
+      %table.table.table-hover
+        %tr
+          %th{width: '1%'}
+            .check_all_box
+              = check_box_tag :check_all 
+          %th{width: '10%'}
+            Avatar
+          %th Nik
+          %th Fullname
+          %th Teacher Class
+          %th{width: '30%'} Address
+          %th Phone
+          %th{width: '15%'}
+            Action
+        - @teachers.each do |resource|
+          %tr
+            %td
+              = check_box_tag 'ids[]', resource.id
+            %td
+              = image_tag resource.avatar.url(:thumb)
+            %td
+              = resource.try(:profile_teacher).try(:nik)
+            %td
+              #{resource.try(:profile_teacher).try(:first_name)} #{resource.try(:profile_teacher).try(:last_name)}
+            %td
+              = resource.try(:profile_teacher).try(:teacher_class)
+            %td
+              = resource.profile_teacher.place_info if resource.profile_teacher.present?
+            %td
+              = resource.try(:profile_teacher).try(:phone)
+            %th
+              = link_to '<i class="fa fa-wrench" aria-hidden="true"></i> Edit'.html_safe, edit_backend_teacher_path(resource), class: 'btn btn-primary btn-xs'
+              = link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, backend_teacher_path(resource), method: 'delete', data: {confirm: "Data #{@resource_name} successfully deleted!"}, class: 'btn btn-danger btn-xs'
+
+    = paginate @teachers
+

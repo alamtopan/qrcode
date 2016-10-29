@@ -1,0 +1,24 @@
+<div class='box box-form'>
+  <div class='container'>
+    <div class='col-md-4 col-md-offset-4'>
+      <div class='box-header'>
+        <h1>Forgot Password?</h1>
+      </div>
+      <div class='box-content'>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <div class='form-group'>
+            <label>Email</label>
+            <%= f.email_field :email, class: "form-control", required: true %>
+          </div>
+          <div class='button'>
+            <%= f.submit "Reset Password Instructions", class: "btn btn-login btn-success" %>
+          </div>
+          <div class="form-group">
+            <%= render "devise/shared/links" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

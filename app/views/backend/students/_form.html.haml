@@ -1,0 +1,113 @@
+.row
+  .col-md-12 
+    %center.avatar-form
+      = image_tag @student.avatar.url(:normal), class: 'img-circle'
+      %br
+      %span.btn.btn-info.btn-choice
+        Choice Avatar
+      = u.file_field :avatar, style: "display: none"
+  .col-md-6
+    .form-group
+      = u.label :username
+      = u.text_field :username, class: "form-control", placeholder: "Username", required: true
+
+  .col-md-6
+    .form-group
+      = u.label :email
+      = u.email_field :email, class: "form-control", placeholder: "Email", required: true
+
+  .col-md-6
+    .form-group
+      = u.label :password
+      = u.password_field :password, class: "form-control", placeholder: "Password"
+
+  .col-md-6
+    .form-group
+      = u.label :password_confirmation
+      = u.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation"
+
+  .col-md-12
+    %h4 Personal Profile
+    %hr
+    
+  .col-md-6
+    .form-group
+      = f.label :nis
+      = f.text_field :nis, class: "form-control", placeholder: "Nis", required: true
+
+  .col-md-6
+    .form-group
+      = f.label :student_class
+      = f.select :student_class, options_for_select(StudentClass.to_a, f.object.student_class), {prompt: 'Choice Class'}, class: 'form-control', required: true
+
+  .col-md-6
+    .form-group
+      = f.label :first_name
+      = f.text_field :first_name, class: "form-control", placeholder: "First Name", required: true
+
+  .col-md-6
+    .form-group
+      = f.label :last_name
+      = f.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true
+
+  .col-md-6
+    .form-group
+      = f.label :birthday
+      %div
+        = f.date_select :born, {start_year: (Date.today.year-60), end_year:   (Date.today.year-12), order: [:day, :month, :year], prompt: { day:   'Day', month: 'Month', year:  'Year'}}, {class: 'form-control select-birthday'}
+
+  .col-md-6
+    .form-group
+      = f.label :gender
+      = f.select :gender, ["Female", "Male"], {prompt: 'Choice Gender'}, class: 'form-control', required: true
+
+  .col-md-12
+    .form-group
+      = f.label :phone
+      = f.text_field :phone, class: "form-control", placeholder: "Phone", required: true
+
+  .col-md-12
+    %h4 Personal Address
+    %hr
+
+  .col-md-6
+    .form-group
+      = f.label :province
+      = f.text_field :province, class: "form-control", placeholder: "Province", required: true
+
+  .col-md-6
+    .form-group
+      = f.label :city
+      = f.text_field :city, class: "form-control", placeholder: "City", required: true
+
+  .col-md-12
+    .form-group
+      = f.label :address
+      = f.text_field :address, class: "form-control", placeholder: "Address", required: true
+
+  .col-md-12
+    %h4 Parent Info
+    %hr
+
+  .col-md-6
+    .form-group
+      = f.label :parent_name
+      = f.text_field :parent_name, class: "form-control", placeholder: "Parent Name"
+
+  .col-md-6
+    .form-group
+      = f.label :parent_address
+      = f.text_field :parent_address, class: "form-control", placeholder: "Parent Address"
+
+  .col-md-6
+    .form-group
+      = f.label :parent_contact
+      = f.text_field :parent_contact, class: "form-control", placeholder: "Parent Contact"
+
+  .col-md-6
+    .form-group
+      = f.label :parent_job
+      = f.text_field :parent_job, class: "form-control", placeholder: "Parent Job"
+
+  .col-md-12
+    = f.submit 'Update', class: "btn btn-success btn-login"

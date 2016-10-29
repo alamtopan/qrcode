@@ -1,0 +1,32 @@
+.row
+  .col-md-12
+    %center.avatar-form
+      = image_tag @admin.avatar.url(:normal), class: 'img-circle'
+      %br
+      %span.btn.btn-info.btn-choice
+        Choice Avatar
+      = u.file_field :avatar, style: "display: none"
+    %br
+    %br
+  .col-md-6
+    .form-group
+      = u.label :username
+      = u.text_field :username, class: "form-control", placeholder: "Username", required: true
+
+  .col-md-6
+    .form-group
+      = u.label :email
+      = u.email_field :email, class: "form-control", placeholder: "Email", required: true
+
+  .col-md-6
+    .form-group
+      = u.label :password
+      = u.password_field :password, class: "form-control", placeholder: "Password"
+
+  .col-md-6
+    .form-group
+      = u.label :password_confirmation
+      = u.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation"
+
+  .col-md-12
+    = f.submit 'Update', class: "btn btn-success btn-login"

@@ -1,0 +1,308 @@
+/********************************/
+/*      Body Container          */
+/********************************/
+body{
+  background: #f5f5f5;
+}
+/*.container{
+  width: 900px;
+}*/
+.panel-container{
+  background: white;
+  float: left;
+  width: 100%;
+  padding: 15px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.05);
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.05);
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+header{
+  background: #00577c;
+  color: white;
+  float: left;
+  width: 100%;
+  padding: 15px;
+  .brand{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .date{
+    float: right;
+    font-size: 18px;
+  }
+}
+
+/********************************/
+/*            Navbar            */
+/********************************/
+.navbar-brand-centered {
+  position: absolute;
+  left: 50%;
+  display: block;
+  width: 160px;
+  text-align: center;
+  background-color: #eee;
+}
+.navbar>.container .navbar-brand-centered, 
+.navbar>.container-fluid .navbar-brand-centered {
+  margin-left: -80px;
+}
+
+/********************************/
+/*          Devise Style        */
+/********************************/
+.devise-body{
+  background: #00577c;
+  color: white;
+  font-size: 12px;
+  font-weight: 300;
+  padding-top: 100px;
+  a{
+    color: white;
+  }
+  h1{
+    color: white;
+  }
+  label{
+    font-weight: normal;
+    font-weight: 300;
+  }
+  .form-control{
+    background: transparent!important;
+    border: 0;
+    box-shadow: none!important;
+    color: white;
+    border-bottom: solid 1px white;
+    border-radius: 0;
+  }
+  .btn{
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 300;
+    border: 0;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px;
+  }
+  .btn-login-submit{
+    background: red;
+    border: 0;
+  }
+  .btn-login-submit:hover{
+    background: rgba(248,80,50,1);
+  }
+  img{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/*===============================
+QR Barcode
+===============================*/
+#v{
+  width:100%;
+  height:100%;
+}
+#qr-canvas{
+  display:none;
+}
+#qrfile{
+  width:100%;
+}
+#mp1{
+  text-align:center;
+  font-size:12px;
+}
+#imghelp{
+  position:relative;
+  left:0px;
+  top:-160px;
+  z-index:100;
+  color: #ccc;
+  /*font:18px arial,sans-serif;
+  background:#f0f0f0;
+  margin-left:35px;
+  margin-right:35px;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-radius:20px;*/
+}
+.selector{
+  margin:0;
+  padding:0;
+  cursor:pointer;
+  margin-bottom:-5px;
+}
+
+.bg-phone {
+  background-size: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 90px;
+}
+.icon-qcode {
+  i {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #ccc;
+  }
+}
+.info-code-vouchers-q{
+  margin-top: 10px;
+}
+.scan-barcode{
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background: black;
+  border-radius: 5px;
+  #outdiv{
+    width:100%;
+    height:300px;
+    border-width: 3px 3px 3px 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #result {
+    border: solid;
+    border-width: 1px 1px 1px 1px;
+    padding: 8px;
+    width: 70%;
+    border-radius: 5px;
+    background: white;
+    box-shadow: none;
+    float: left;
+  }
+  .btn-check-barcode{
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    height: 50px;
+  }
+
+  #identify{
+    color: green;
+    padding-right: 10px;
+  }
+}
+
+
+/*=======================================
+  Alert Custom
+=======================================*/
+.section-alert{
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  top: 120px;
+  padding-left: 10px;
+  padding-right: 10px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  padding-top: 120px;
+  .alert{
+    width: 600px;
+    z-index: 99;
+    margin: auto;
+    text-align: center;
+  }
+}
+.alert{
+  margin-top: 10px;
+}
+
+
+/*=======================================
+  Card Custom
+=======================================*/
+.card-student{
+  background: white;
+  color: #222;
+  width: 100%;
+  border-radius: 5px;
+  width: 100%;
+  float: left;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border: 1px solid #ccc;
+  .form-group{
+    text-align: left;
+    position: relative;
+    h4{
+      font-weight: normal;
+      font-size: 13px;
+      color: #666;
+    }
+    .overlay{
+      position: absolute;
+      background: black;
+    }
+  }
+  .header{
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+    background: #367fa9;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    color: white;
+  }
+  .avatar{
+    margin: auto;
+    display: table;
+    width: 120px;
+    border-radius: 50%;
+  }
+  small{
+    color: #666;
+  }
+}
+
+.student-success{
+  color: green;
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+}
+
+.pagination > li.gap{
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/********************************/
+/*            Footer            */
+/********************************/
+footer{
+  background: black;
+  color: white;
+  padding: 10px;
+  margin-top: 30px;
+  font-size: 12px;
+  float: left;
+  width: 100%;
+  border-radius: 5px;
+}
