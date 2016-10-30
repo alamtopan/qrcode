@@ -19,7 +19,7 @@
     .col-md-12
       %br
       = submit_tag 'Do Destroy', value: 'Do Destroy', class: 'btn btn-danger'
-    .box-body.table-responsive
+    .box-body
       %table.table.table-hover
         %tr
           %th{width: '1%'}
@@ -39,7 +39,7 @@
             %td
               = check_box_tag 'ids[]', resource.id
             %td
-              = image_tag resource.try(:student).try(:avatar).url(:thumb)
+              = image_tag resource.try(:student).try(:avatar).url(:thumb),  style: 'width:50px;'
             %td
               = resource.try(:student).try(:profile_student).try(:nis)
             %td

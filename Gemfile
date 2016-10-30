@@ -32,15 +32,7 @@ gem "bower-rails", "~> 0.10.0"
 gem "bootstrap-sass", "~> 3.3", ">= 3.3.6"
 gem "kaminari"
 gem 'omniauth'
-gem 'omniauth-facebook'
-gem "omniauth-google-oauth2"
-gem 'omniauth-instagram', '1.0.2'
-gem 'omniauth-twitter', '1.2.1'
 gem 'devise'
-gem 'koala', '2.2.0'
-gem 'twitter', '5.15.0'
-gem "instagram"
-gem "fb_graph"
 gem "pg"
 gem 'letter_opener'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
@@ -50,7 +42,6 @@ gem 'impressionist'
 gem 'cocoon'
 gem 'htmlcompressor'
 gem 'coupon_code'
-gem "whenever", require: false
 gem 'ancestry'
 gem 'better_errors'
 gem 'remotipart', '~> 1.2'
@@ -58,18 +49,13 @@ gem 'groupdate'
 gem 'chartkick'
 gem "paranoia", "~> 2.0"
 gem "httparty"
-gem "rest-client", "~> 1.6.7"
 gem 'angularjs-rails'
-gem 'ratyrate'
 gem 'adminlte2-rails'
 gem "breadcrumbs_on_rails"
 gem 'enumerate_it'
-gem 'country_select'
 gem 'barby'
 gem 'rqrcode'
 gem 'rqrcode_png'
-gem 'dragonfly'
-gem 'angularjs-rails'
 
 group :development, :test do
   gem "sqlite3"
