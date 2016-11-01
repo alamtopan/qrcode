@@ -14,9 +14,9 @@
         = hidden_field_tag :id, params[:id]
         .row
           .col-md-4
-            = date_field_tag :start_at, nil, value: params[:start_at], class: 'form-control datepicker', placeholder: 'Start At'
+            = text_field_tag :start_at, nil, value: params[:start_at], class: 'form-control datepicker', placeholder: 'Start At'
           .col-md-4
-            = date_field_tag :end_at, nil, value: params[:end_at], class: 'form-control datepicker',  placeholder: 'End At'
+            = text_field_tag :end_at, nil, value: params[:end_at], class: 'form-control datepicker',  placeholder: 'End At'
           .col-md-1
             %button{type: "submit", class: "btn btn-default"} Search
       = form_for :multiple, url: multiple_action_backend_attendances_path, method: 'get' do

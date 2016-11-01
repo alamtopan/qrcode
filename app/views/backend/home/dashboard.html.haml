@@ -5,37 +5,37 @@
       = javascript_include_tag "//www.google.com/jsapi", "chartkick"
       .well
         %h4{align: 'center'} Statistik Attendance Students
-      = column_chart Attendance.per_year.group_by_month(:created_at, format: "%b %Y").count
+      = column_chart @attendances.per_year.group_by_month('attendances.created_at').count
       %br
       %ul.today-datas.display-center
         %li
           .datas-text
             %b 
-              = Attendance.count_today
+              = @attendances.count_today
             %br 
             Attendance Today
         %li
           .datas-text
             %b 
-              = Attendance.count_week
+              = @attendances.count_week
             %br 
             Attendance This Week
         %li
           .datas-text
             %b 
-              = Attendance.count_month
+              = @attendances.count_month
             %br 
             Attendance This Month
         %li
           .datas-text
             %b 
-              = Attendance.count_year
+              = @attendances.count_year
             %br 
             Attendance This Year
         %li
           .datas-text
             %b 
-              = Attendance.count
+              = @attendances.count
             %br 
             Attendance till date
       .chart

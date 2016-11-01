@@ -3,8 +3,13 @@
 //= require bootstrap
 //= require app
 //= require cocoon
+//= require jquery_ui
 
 $(document).ready(function(){
+  $('.datepicker').datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+
   $(".check_all_box input").click(function(){
     $('input:checkbox').not(this).prop('checked', this.checked);
   });
