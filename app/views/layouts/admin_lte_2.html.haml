@@ -8,6 +8,7 @@
     %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    'backend', media: 'all'
+    = javascript_include_tag 'backend'
     = csrf_meta_tags
   %body{:class => "skin-blue sidebar-mini fixed #{params[:controller].parameterize} #{action_name}"}
     .wrapper
@@ -25,4 +26,3 @@
       %footer.main-footer
         %strong
           Copyright AdminLTE © 2015
-    = javascript_include_tag 'backend'

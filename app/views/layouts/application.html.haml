@@ -2,19 +2,10 @@
 %html
   %head
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
     = csrf_meta_tags 
 
-  %body
+  %body.devise-body
     .container
-      .panel-container
-        %header
-          .col-md-6
-            .brand Absensi Scan QR-Barcode SMP N 11 Kota Sukabumi
-          .col-md-6
-            .date
-              #{Time.zone.now.strftime("%A, %d, %B, %Y")}
-        .col-md-12
-        = flash_messages
-        = yield
-        = render 'shareds/footer'
+      = flash_messages
+      = yield
+  = javascript_include_tag 'application'

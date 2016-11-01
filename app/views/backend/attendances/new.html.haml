@@ -1,0 +1,39 @@
+.panel-container
+  .header
+    .col-md-6
+      .brand Absensi Scan QR-Barcode SMP N 11 Kota Sukabumi
+    .col-md-6
+      .date
+        #{Time.zone.now.strftime("%A, %d, %B, %Y")}
+  .col-md-12
+  = flash_messages
+  .panel
+    .panel-body
+      .row
+        .col-md-12
+          .alert.alert-danger
+            %center
+              <i class="fa fa-warning" aria-hidden="true"></i> Scan Qr-barcode hanya bisa dilakukan di browser Mozila Firefox Versi Terbaru!
+        .col-md-6
+          #main.scan-barcode
+            #mainbody.icon-qcode
+              .col-xs-6
+                %span#webcamimg.selector{:align => "left", :onclick => "setwebcam()"}
+                  %i.fa.fa-qrcode
+                %span#qrimg.selector{:align => "right", :onclick => "setimg()"}
+                  %i.fa.fa-image
+              .col-xs-12
+                #outdiv
+                %center
+                  = form_for :search, url: backend_attendances_path, method: 'post', html:{class: 'form-inline'} do |f|
+                    .form-group{style: 'width:100%;'}
+                      = hidden_field_tag :code, nil, id: 'result', placeholder: 'Nis', class: 'form-control code-vouchers-q'
+                      %span#identify
+                      = submit_tag 'HADIR', class: 'btn btn-success' 
+              
+        .col-md-6
+          .results-student
+            = render 'public/results'
+%canvas#qr-canvas{:height => "600", :width => "800"}
+  :javascript
+    load();

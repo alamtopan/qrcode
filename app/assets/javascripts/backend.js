@@ -4,10 +4,20 @@
 //= require app
 //= require cocoon
 //= require jquery_ui
+//= require llqrcode
+//= require plusone
+//= require webqr
 
 $(document).ready(function(){
   $('.datepicker').datepicker({
     dateFormat: "yy-mm-dd"
+  });
+
+  $('.alert .close').click(function(){
+    $('.section-alert').hide();
+  });
+  $('.section-alert').click(function(){
+    $('.section-alert').hide();
   });
 
   $(".check_all_box input").click(function(){

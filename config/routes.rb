@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     }
 
   root 'public#home'
-  get 'process_attendance', to: 'public#process_attendance', as: 'process_attendance'
 
   namespace :backend do
     get "dashboard", to: 'home#dashboard', as: 'dashboard_admin'
@@ -25,21 +24,6 @@ Rails.application.routes.draw do
       collection do
         get :multiple_action
         get :report
-      end
-    end
-    resources :attendances do
-      collection do
-        get :multiple_action
-      end
-    end
-  end
-
-  namespace :userpage do
-    get 'dashboard', to: 'home#dashboard', as: 'dashboard'
-    resources :teachers
-    resources :students do
-      collection do
-        get :multiple_action
       end
     end
     resources :attendances do
