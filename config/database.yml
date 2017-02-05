@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-
+#database
 development:
   <<: *default
   database: absensi_dev

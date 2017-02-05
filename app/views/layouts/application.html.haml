@@ -10,7 +10,9 @@
       .panel-container
         %header
           .col-md-6
-            .brand Absensi Scan QR-Barcode SMP N 11 Kota Sukabumi
+            .brand
+              = image_tag 'logo.png', style: 'height:40px;'
+              SMP NEGERI 11 SUKABUMI
           .col-md-6
             .date
               #{Time.zone.now.strftime("%A, %d, %B, %Y")}

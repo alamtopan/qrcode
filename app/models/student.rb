@@ -11,6 +11,7 @@ class Student < User
   include TheUser::StudentSearching
 
   def get_barcode?
+    # script enkripsi barcode
     if self.profile_student.present? && self.profile_student.nis.present?
       RQRCode::QRCode.new("#{self.profile_student.nis}").to_img.resize(200, 200).to_data_url
     end

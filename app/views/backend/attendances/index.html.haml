@@ -14,7 +14,7 @@
         .col-md-1
           %button{type: "submit", class: "btn btn-default"} Search
   .col-md-4
-    = link_to 'Create New', new_backend_attendance_path, class: 'btn btn-info pull-right'
+    = link_to 'Create New',root_path, class: 'btn btn-info pull-right', target: '_blank'
   = form_for :multiple, url: multiple_action_backend_attendances_path, method: 'get' do
     .col-md-12
       %br
@@ -27,7 +27,7 @@
               = check_box_tag :check_all 
           %th{width: '10%'}
             Avatar
-          %th Nis
+          %th NIS
           %th Fullname
           %th Student Class
           %th Status
@@ -39,9 +39,9 @@
             %td
               = check_box_tag 'ids[]', resource.id
             %td
-              = image_tag resource.try(:student).try(:avatar).url(:thumb),  style: 'width:50px;'
+              = image_tag resource.try(:student).try(:avatar).url(:thumb),  style: 'width:50px;' if resource.student.present?
             %td
-              = resource.try(:student).try(:profile_student).try(:nis)
+              = resource.try(:student).try(:profile_student).try(:nis) 
             %td
               #{resource.try(:student).try(:profile_student).try(:first_name)} #{resource.try(:student).try(:profile_student).try(:last_name)}
             %td

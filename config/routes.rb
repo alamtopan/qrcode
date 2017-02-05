@@ -33,19 +33,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  namespace :userpage do
-    get 'dashboard', to: 'home#dashboard', as: 'dashboard'
-    resources :teachers
-    resources :students do
-      collection do
-        get :multiple_action
-      end
-    end
-    resources :attendances do
-      collection do
-        get :multiple_action
-      end
-    end
-  end
 end

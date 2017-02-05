@@ -1,12 +1,9 @@
 %body
   %header.main-header
     %a.logo{:href => backend_dashboard_admin_path}
-      %span.logo-mini
-        %b> A
-        LT
       %span.logo-lg
-        %b> Admin
-        LTE
+        = image_tag 'logo.png', style: 'height:40px;'
+        SMP NEGERI 11
     %nav.navbar.navbar-static-top{:role => "navigation"}
       %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
         %span.sr-only Toggle navigation

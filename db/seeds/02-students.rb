@@ -13,8 +13,8 @@ module SeedStudent
         if s.save
           p = ProfileStudent.find_or_create_by(user_id: s.id)
           p.nis = "AIB00#{v}"
-          p.student_class = ['kelas1', 'kelas2', 'kelas3'].shuffle.sample
-          p.first_name = "First_#{v}"
+          p.student_class = StudentClass.to_a.map{|c| c[0]}.shuffle.sample
+          p.first_name = "First_#{v}" 
           p.last_name = "Last_#{v}"
           p.born = Date.today - 20.year
           p.gender = 'Male'

@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
   devise  :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable,
           :validatable, :lockable, :timeoutable, :authentication_keys => [:login]
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, uniqueness: { case_sensitive: false }
+  validates :username, presence: true
+  validates :email, presence: true
+  # validates :email, uniqueness: { case_sensitive: false }
+  # validates :username, presence: true, uniqueness: { case_sensitive: false }
+  # validates :email, uniqueness: { case_sensitive: false }
 
   has_many :attendances
 

@@ -47,7 +47,9 @@
     .col-md-7
       .col-md-12
         .card-student
-          .header Student Card SMP N 11 Kota Sukabumi
+          .header 
+            = image_tag 'logo.png', style: 'height:40px;'
+            SMP N 11 Kota Sukabumi
           .col-md-4
             = image_tag @student.avatar.url(:normal), class: 'avatar'
             %h4 #{@profile_student.nis}

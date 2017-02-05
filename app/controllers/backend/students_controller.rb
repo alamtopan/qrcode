@@ -55,11 +55,14 @@ class Backend::StudentsController < Backend::ApplicationController
 
   def create
     @student = Student.new(params_permit)
-
+    @student.username = params[:student][:profile_student_attributes][:nis]
+    @student.email = params[:student][:profile_student_attributes][:nis] + '@student.com'
+    @student.password = 12345678
+    @student.password_confirmation = 12345678
     if @student.save
-      redirect_to :back, notice: "Successfully saved #{@resource_name}"
+      redirect_to backend_students_path, notice: "Successfully saved #{@resource_name}"
     else
-      redirect_to :back
+      redirect_to :back, alert: @student.errors.full_messages.join("<br>")
     end
   end
 
@@ -73,7 +76,7 @@ class Backend::StudentsController < Backend::ApplicationController
     resource
 
     if @student.update(params_permit)
-      redirect_to :back, notice: "Successfully saved #{@resource_name}"
+      redirect_to backend_students_path, notice: "Successfully saved #{@resource_name}"
     else
       redirect_to :back
     end

@@ -1,7 +1,9 @@
 - @profile_student = @student.profile_student
 .col-md-12
   .card-student
-    .header Student Card SMP N 11 Kota Sukabumi
+    .header 
+      = wicked_pdf_image_tag 'logo.png', style: 'height:40px;'
+      SMP N 11 Kota Sukabumi
     .col-xs-4
       = wicked_pdf_image_tag @student.avatar.url(:normal), class: 'avatar'
       %h4 #{@profile_student.nis}

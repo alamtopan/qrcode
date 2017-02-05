@@ -23,7 +23,7 @@ class Backend::AttendancesController < Backend::ApplicationController
     resource
 
     if @attendance.update(params_permit)
-      redirect_to :back, notice: "Successfully saved #{@resource_name}"
+      redirect_to backend_attendances_path, notice: "Successfully saved #{@resource_name}"
     else
       redirect_to :back
     end

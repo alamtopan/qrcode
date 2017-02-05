@@ -24,7 +24,7 @@ class Backend::AdminsController < Backend::ApplicationController
     @admin.confirmation_token = nil
     @admin.confirmed_at = Time.now
     if @admin.save
-      redirect_to :back, notice: "Successfully saved #{@resource_name}"
+      redirect_to backend_admins_path, notice: "Successfully saved #{@resource_name}"
     else
       redirect_to :back
     end
@@ -39,7 +39,7 @@ class Backend::AdminsController < Backend::ApplicationController
     resource
 
     if @admin.update(params_permit)
-      redirect_to :back, notice: "Successfully saved #{@resource_name}"
+      redirect_to backend_admins_path, notice: "Successfully saved #{@resource_name}"
     else
       redirect_to :back
     end

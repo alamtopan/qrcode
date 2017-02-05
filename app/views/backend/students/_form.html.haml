@@ -6,25 +6,8 @@
       %span.btn.btn-info.btn-choice
         Choice Avatar
       = u.file_field :avatar, style: "display: none"
-  .col-md-6
-    .form-group
-      = u.label :username
-      = u.text_field :username, class: "form-control", placeholder: "Username", required: true
-
-  .col-md-6
-    .form-group
-      = u.label :email
-      = u.email_field :email, class: "form-control", placeholder: "Email", required: true
-
-  .col-md-6
-    .form-group
-      = u.label :password
-      = u.password_field :password, class: "form-control", placeholder: "Password"
-
-  .col-md-6
-    .form-group
-      = u.label :password_confirmation
-      = u.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation"
+    %br
+    %br
 
   .col-md-12
     %h4 Personal Profile
@@ -32,38 +15,38 @@
     
   .col-md-6
     .form-group
-      = f.label :nis
-      = f.text_field :nis, class: "form-control", placeholder: "Nis", required: true
+      %label *NIS
+      = f.text_field :nis, class: "form-control", placeholder: "NIS", required: true
 
   .col-md-6
     .form-group
-      = f.label :student_class
-      = f.select :student_class, options_for_select(StudentClass.to_a, f.object.student_class), {prompt: 'Choice Class'}, class: 'form-control', required: true
+      = f.label '*student_class'
+      = f.select :student_class, options_for_select(StudentClass.to_a.map{|c| c[0]}, f.object.student_class), {prompt: 'Choice Class'}, class: 'form-control', required: true
 
   .col-md-6
     .form-group
-      = f.label :first_name
+      = f.label '*first_name'
       = f.text_field :first_name, class: "form-control", placeholder: "First Name", required: true
 
   .col-md-6
     .form-group
-      = f.label :last_name
+      = f.label '*last_name'
       = f.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true
 
   .col-md-6
     .form-group
-      = f.label :birthday
+      = f.label '*birthday'
       %div
-        = f.date_select :born, {start_year: (Date.today.year-60), end_year:   (Date.today.year-12), order: [:day, :month, :year], prompt: { day:   'Day', month: 'Month', year:  'Year'}}, {class: 'form-control select-birthday'}
+        = f.date_select :born, {start_year: (Date.today.year-60), end_year:   (Date.today.year-12), order: [:day, :month, :year], prompt: { day:   'Day', month: 'Month', year:  'Year'}}, {class: 'form-control select-birthday', required: true}
 
   .col-md-6
     .form-group
-      = f.label :gender
+      = f.label '*gender'
       = f.select :gender, ["Female", "Male"], {prompt: 'Choice Gender'}, class: 'form-control', required: true
 
   .col-md-12
     .form-group
-      = f.label :phone
+      = f.label '*phone'
       = f.text_field :phone, class: "form-control", placeholder: "Phone", required: true
 
   .col-md-12
@@ -72,17 +55,17 @@
 
   .col-md-6
     .form-group
-      = f.label :province
+      = f.label '*province'
       = f.text_field :province, class: "form-control", placeholder: "Province", required: true
 
   .col-md-6
     .form-group
-      = f.label :city
+      = f.label '*city'
       = f.text_field :city, class: "form-control", placeholder: "City", required: true
 
   .col-md-12
     .form-group
-      = f.label :address
+      = f.label '*address'
       = f.text_field :address, class: "form-control", placeholder: "Address", required: true
 
   .col-md-12
@@ -110,4 +93,4 @@
       = f.text_field :parent_job, class: "form-control", placeholder: "Parent Job"
 
   .col-md-12
-    = f.submit 'Update', class: "btn btn-success btn-login"
+    = f.submit 'SAVE', class: "btn btn-success btn-login"

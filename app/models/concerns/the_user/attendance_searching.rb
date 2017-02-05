@@ -7,6 +7,7 @@ module TheUser
         return if _key.blank?
         query_opts = [
           "LOWER(profile_students.nis) LIKE LOWER(:key)",
+          "LOWER(profile_students.student_class) LIKE LOWER(:key)",
           "LOWER(users.username) LIKE LOWER(:key)",
           "LOWER(users.email) LIKE LOWER(:key)"
         ].join(' OR ')
