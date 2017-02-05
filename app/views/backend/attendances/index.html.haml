@@ -5,9 +5,9 @@
     = form_for :search, url: backend_attendances_path(params), method: 'get', html:{class: 'form-inline'} do |f|
       .row
         .col-md-3
-          = date_field_tag :start_at, nil, value: params[:start_at], class: 'form-control datepicker', placeholder: 'Start At'
+          = text_field_tag :start_at, nil, value: params[:start_at], class: 'form-control datepicker', placeholder: 'Start At'
         .col-md-3
-          = date_field_tag :end_at, nil, value: params[:end_at], class: 'form-control datepicker',  placeholder: 'End At'
+          = text_field_tag :end_at, nil, value: params[:end_at], class: 'form-control datepicker',  placeholder: 'End At'
         .col-md-4
           .form-group
             = text_field_tag :key, params[:key], class: 'form-control', placeholder: "Search", style: 'width: 300px'

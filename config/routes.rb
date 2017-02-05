@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     }
 
   root 'public#home'
-  get 'process_attendance', to: 'public#process_attendance', as: 'process_attendance'
 
   namespace :backend do
     get "dashboard", to: 'home#dashboard', as: 'dashboard_admin'
