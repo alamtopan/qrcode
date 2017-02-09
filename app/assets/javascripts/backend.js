@@ -8,6 +8,8 @@
 //= require plusone
 //= require webqr
 
+load();
+
 $(document).ready(function(){
   $('.datepicker').datepicker({
     dateFormat: "yy-mm-dd"
