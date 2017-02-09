@@ -74,6 +74,32 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # Do not dump schema after migrations.
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.asset_host = "http://104.251.212.107"
+  config.action_mailer.default_url_options = { host: "http://104.251.212.107" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "qrcode-elin.com",
+    :user_name            => "movies.series.com",
+    :password             => "alam239880",
+    :authentication       => "login",
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => "none"
+  }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix         => "Errors-Notification-Movies-Series ",
+      :sender_address       => %{"Movies-Series-Error" <Errors@sovies-series.com>},
+      :exception_recipients => %w{alamtopani881@gmail.com},
+      :delivery_method => :smtp,
+      :smtp_settings => {
+        :user_name => 'alamtopani881',
+        :password => '0266239880',
+      }
+    }
 end
