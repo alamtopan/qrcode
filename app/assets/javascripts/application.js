@@ -10,10 +10,7 @@
 //= require theme
 //= require cocoon
 
-load();
-
 $(document).ready(function() {
-
   $('.alert .close').click(function(){
     $('.section-alert').hide();
   });
@@ -21,3 +18,5 @@ $(document).ready(function() {
     $('.section-alert').hide();
   });
 });
+
+load();
