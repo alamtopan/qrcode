@@ -6,10 +6,10 @@
           #main.scan-barcode
             #mainbody.icon-qcode
               .col-xs-6
-                / %span#webcamimg.selector{:align => "left", :onclick => "setwebcam()"}
-                /   %i.glyphicon.glyphicon-qrcode
-                / %span#qrimg.selector{:align => "right", :onclick => "setimg()"}
-                /   %i.glyphicon.glyphicon-camera
+                %span#webcamimg.selector{:align => "left", :onclick => "setwebcam()"}
+                  %i.glyphicon.glyphicon-qrcode
+                %span#qrimg.selector{:align => "right", :onclick => "setimg()"}
+                  %i.glyphicon.glyphicon-camera
               .col-xs-12
                 #outdiv
                 %center
@@ -23,5 +23,3 @@
           .results-student
             = render 'results'
 %canvas#qr-canvas{:height => "600", :width => "800"}
-:javascript
-  load();
