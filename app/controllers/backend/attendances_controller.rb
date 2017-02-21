@@ -12,6 +12,11 @@ class Backend::AttendancesController < Backend::ApplicationController
       @attendances_count = collection.size
       @attendances = collection.page(page).per(per_page)
     end
+
+    respond_to do |format|
+      format.html
+      format.xls {@attendances = collection}
+    end
   end
 
   def show
@@ -78,10 +83,10 @@ class Backend::AttendancesController < Backend::ApplicationController
         end
 
         redirect_to :back, alert: 'Successfully deleted attendances!'
-      else
-        redirect_to :back, alert: 'Nothing checked!'
-      end 
-    end
+      end
+    else
+      redirect_to :back, alert: 'Nothing checked!'
+    end 
   end
 
   private

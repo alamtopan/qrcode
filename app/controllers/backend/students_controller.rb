@@ -102,10 +102,10 @@ class Backend::StudentsController < Backend::ApplicationController
         end
 
         redirect_to :back, alert: 'Successfully deleted students!'
-      else
-        redirect_to :back, alert: 'Nothing checked!'
-      end 
-    end
+      end
+    else
+      redirect_to :back, alert: 'Nothing checked!'
+    end 
   end
 
   private

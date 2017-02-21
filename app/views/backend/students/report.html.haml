@@ -72,6 +72,5 @@
 
         = column_chart @query_attendances.per_year.group_by_month(:created_at, format: "%b %Y").count
         = line_chart @query_attendances.per_year.group_by_month(:created_at, format: "%b %Y").count
-        = pie_chart @query_attendances.per_year.group(:status).count
 
 
