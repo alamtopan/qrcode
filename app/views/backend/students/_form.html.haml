@@ -1,96 +1,83 @@
 .row
   .col-md-12 
     %center.avatar-form
-      = image_tag @student.avatar.url(:normal), class: 'img-circle'
+      = image_tag @student.photo.url(:normal), class: 'img-circle'
       %br
       %span.btn.btn-info.btn-choice
         Choice Avatar
-      = u.file_field :avatar, style: "display: none"
+      = f.file_field :photo, style: "display: none"
     %br
     %br
 
   .col-md-12
-    %h4 Personal Profile
-    %hr
-    
+    .form-group
+      %br
+      %h3 Data Akun
+      %hr
   .col-md-6
     .form-group
-      %label *NIS
-      = f.text_field :nis, class: "form-control", placeholder: "NIS", required: true
-
+      %em * 
+      = f.label :username
+      = f.text_field :username, class: 'form-control', required: true
+    .form-group
+      %em * 
+      = f.label :email
+      = f.email_field :email, class: 'form-control', required: true
   .col-md-6
     .form-group
-      = f.label '*student_class'
-      = f.select :student_class, options_for_select(StudentClass.to_a.map{|c| c[0]}, f.object.student_class), {prompt: 'Choice Class'}, class: 'form-control', required: true
-
-  .col-md-6
+      %em * 
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
     .form-group
-      = f.label '*first_name'
-      = f.text_field :first_name, class: "form-control", placeholder: "First Name", required: true
-
-  .col-md-6
-    .form-group
-      = f.label '*last_name'
-      = f.text_field :last_name, class: "form-control", placeholder: "Last Name", required: true
-
-  .col-md-6
-    .form-group
-      = f.label '*birthday'
-      %div
-        = f.date_select :born, {start_year: (Date.today.year-60), end_year:   (Date.today.year-12), order: [:day, :month, :year], prompt: { day:   'Day', month: 'Month', year:  'Year'}}, {class: 'form-control select-birthday', required: true}
-
-  .col-md-6
-    .form-group
-      = f.label '*gender'
-      = f.select :gender, ["Female", "Male"], {prompt: 'Choice Gender'}, class: 'form-control', required: true
-
+      %em * 
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
   .col-md-12
     .form-group
-      = f.label '*phone'
-      = f.text_field :phone, class: "form-control", placeholder: "Phone", required: true
-
+      %h3 Data Pribadi
+      %hr
+  .col-md-6
+    .form-group
+      %em * 
+      = f.label :nama_depan
+      = f.text_field :first_name, class: 'form-control', required: true
+    .form-group
+      %em * 
+      = f.label :nama_belakang
+      = f.text_field :last_name, class: 'form-control', required: true
+    .form-group
+      %em * 
+      = f.label :tanggal_lahir
+      = f.date_field :born, class: 'form-control', required: true
+  .col-md-6
+    .form-group
+      %em * 
+      = f.label :no_hp
+      = f.number_field :phone, class: 'form-control', required: true
+    .form-group
+      %em * 
+      = f.label :jenis_kelamin
+      = f.select :gender, ['Laki-Laki', 'Perempuan'], {prompt: 'Pilih Jenis Kelamin'}, class: 'form-control', required: true
+    .form-group
+      %em * 
+      = f.label :alamat
+      = f.text_field :address, class: 'form-control', required: true
   .col-md-12
-    %h4 Personal Address
-    %hr
-
-  .col-md-6
     .form-group
-      = f.label '*province'
-      = f.text_field :province, class: "form-control", placeholder: "Province", required: true
-
-  .col-md-6
+      %h3 Data Orangtua
+      %hr
     .form-group
-      = f.label '*city'
-      = f.text_field :city, class: "form-control", placeholder: "City", required: true
-
-  .col-md-12
+      %em * 
+      = f.label :nama_orangtua
+      = f.text_field :parent_name, class: 'form-control', required: true
     .form-group
-      = f.label '*address'
-      = f.text_field :address, class: "form-control", placeholder: "Address", required: true
-
-  .col-md-12
-    %h4 Parent Info
-    %hr
-
-  .col-md-6
+      %em * 
+      = f.label :kontak_orangtua
+      = f.number_field :parent_contact, class: 'form-control', required: true
     .form-group
-      = f.label :parent_name
-      = f.text_field :parent_name, class: "form-control", placeholder: "Parent Name"
-
-  .col-md-6
-    .form-group
-      = f.label :parent_address
-      = f.text_field :parent_address, class: "form-control", placeholder: "Parent Address"
-
-  .col-md-6
-    .form-group
-      = f.label :parent_contact
-      = f.text_field :parent_contact, class: "form-control", placeholder: "Parent Contact"
-
-  .col-md-6
-    .form-group
-      = f.label :parent_job
-      = f.text_field :parent_job, class: "form-control", placeholder: "Parent Job"
+      %em * 
+      = f.label :alamat_orangtua
+      = f.text_area :parent_address, class: 'form-control', required: true
 
   .col-md-12
     = f.submit 'SAVE', class: "btn btn-success btn-login"

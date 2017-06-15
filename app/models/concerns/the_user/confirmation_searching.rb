@@ -1,13 +1,13 @@
 module TheUser
-  module StudentSearching
+  module ConfirmationSearching
     extend ActiveSupport::Concern
 
     module ClassMethods
       def by_keywords(_key)
         return if _key.blank?
         query_opts = [
-          "LOWER(users.username) LIKE LOWER(:key)",
-          "LOWER(users.email) LIKE LOWER(:key)"
+          "LOWER(confirmations.invoice_code) LIKE LOWER(:key)",
+          "LOWER(confirmations.sender_name) LIKE LOWER(:key)"
         ].join(' OR ')
         where(query_opts, {key: "%#{_key}%"} )
       end

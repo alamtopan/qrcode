@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">No.</Data></Cell>
+        <Cell><Data ss:Type="String">Kode</Data></Cell>
+        <Cell><Data ss:Type="String">Siswa</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Pilihan Kursus</Data></Cell>
+        <Cell><Data ss:Type="String">Jadwal</Data></Cell>
+        <Cell><Data ss:Type="String">Harga</Data></Cell>
+        <Cell><Data ss:Type="String">Tanggal Daftar</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Dibuat</Data></Cell>
+        <Cell><Data ss:Type="String">Jenis Kelamin</Data></Cell>
+        <Cell><Data ss:Type="String">Alamat</Data></Cell>
+        <Cell><Data ss:Type="String">Tanggal Lahir</Data></Cell>
+        <Cell><Data ss:Type="String">No.HP</Data></Cell>
+        <Cell><Data ss:Type="String">Nama Orangtua</Data></Cell>
+        <Cell><Data ss:Type="String">Kontak Orangtua</Data></Cell>
+        <Cell><Data ss:Type="String">Alamat Orangtua</Data></Cell>
+        <Cell><Data ss:Type="String">Klasifikasi</Data></Cell>
+      </Row>
+    <% @collection.each_with_index do |resource, index| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= index+=1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.code %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:first_name) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:email) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.schedule %></Data></Cell>
+        <Cell><Data ss:Type="String">Rp. <%= resource.price %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.created_at.strftime("%B, %d, %Y") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.created_at.strftime("%B, %d, %Y") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:gender) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:address) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:born) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:phone) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:parent_name) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:parent_address) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:parent_contact) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.grade? %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

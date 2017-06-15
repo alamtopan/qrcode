@@ -16,7 +16,7 @@ module TheUser
     end
 
     def after_sign_in_path_for(resource)
-      if current_user.present? && current_user.is_admin? || current_user.present? && current_user.is_teacher?
+      if current_user.present? && current_user.is_admin?
         return backend_dashboard_admin_path
       else 
         session[:previous_url] || root_path

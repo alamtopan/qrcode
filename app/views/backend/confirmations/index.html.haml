@@ -1,0 +1,50 @@
+.box
+  %br
+  .panel-body
+    %label <b>#{@confirmations_count}</b> Result #{params[:controller].split('/')[1]}
+    = form_for :search, url: backend_confirmations_path(params), method: 'get', html:{class: 'form-inline'} do |f|
+      .form-group
+        = text_field_tag :key, params[:key], class: 'form-control', placeholder: "Search", style: 'width: 300px'
+      %button{type: "submit", class: "btn btn-default"} Search
+
+    %a{ href: "confirmations.xls?#{request.fullpath.split("?")[1]}", class: 'btn btn-success pull-right'} Export Data
+
+  .box-body
+    %table.table.table-hover
+      %tr
+        %th Status
+        %th{width: '10%'}
+          Kode Invoice
+        %th Pengirim
+        %th Email
+        %th Akun Bank
+        %th Metode Pembayaran
+        %th Nominal
+        %th Tanggal Transfer
+        %th{width: '10%'} Dibuat
+
+      - @confirmations.each do |resource|
+        = form_for Confirmation.find(resource), url: backend_confirmation_path(resource), method: 'put' do |f|
+          %tr
+            %td
+              = f.select :status, [Confirmation::PAID, Confirmation::PENDING, Confirmation::CANCEL]
+              = submit_tag :change
+            %td
+              = resource.invoice_code
+            %td
+              = resource.try(:sender_name)
+            %td
+              = resource.try(:user).try(:email)
+            %td
+              = resource.try(:bank_account)
+            %td
+              = resource.try(:payment_method)
+            %td
+              Rp. #{resource.nominal}
+            %td
+              = resource.payment_date.strftime("%B, %d, %Y") if resource.payment_date.present?
+            %td
+              = resource.created_at.strftime("%B, %d, %Y")
+
+    = paginate @confirmations
+

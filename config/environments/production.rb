@@ -83,23 +83,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => "qrcode-elin.com",
+    :domain               => "course-natali.com",
     :user_name            => "movies.series.com",
     :password             => "alam239880",
     :authentication       => "login",
     :enable_starttls_auto => true,
     :openssl_verify_mode  => "none"
   }
-
-  Rails.application.config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      :email_prefix         => "Errors-Notification-Movies-Series ",
-      :sender_address       => %{"Movies-Series-Error" <Errors@sovies-series.com>},
-      :exception_recipients => %w{alamtopani881@gmail.com},
-      :delivery_method => :smtp,
-      :smtp_settings => {
-        :user_name => 'alamtopani881',
-        :password => '0266239880',
-      }
-    }
 end

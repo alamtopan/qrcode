@@ -1,0 +1,57 @@
+.box
+  %br
+  .panel-body
+    %label <b>#{@courses_count}</b> Result #{params[:controller].split('/')[1]}
+    = form_for :search, url: backend_courses_path(params), method: 'get', html:{class: 'form-inline'} do |f|
+      .form-group
+        = text_field_tag :key, params[:key], class: 'form-control', placeholder: "Search", style: 'width: 300px'
+      %button{type: "submit", class: "btn btn-default"} Search
+
+    %a{ href: "courses.xls?#{request.fullpath.split("?")[1]}", class: 'btn btn-success pull-right'} Export Data
+
+  = form_for :multiple, url: multiple_action_backend_courses_path, method: 'get' do
+    .box-body
+      %table.table.table-hover
+        %tr
+          %th{width: '5%'}
+            Kode
+          %th Siswa
+          %th Email
+          %th Pilihan Kursus
+          %th Jadwal
+          %th Harga
+          %th Tanggal Daftar
+          %th Status
+          %th{width: '10%'} Action
+
+        - @courses.each do |resource|
+          %tr
+            %td
+              = resource.code
+            %td
+              = resource.try(:user).try(:first_name)
+            %td
+              = resource.try(:user).try(:email)
+            %td
+              = resource.name
+            %td
+              = resource.schedule
+            %td
+              Rp. #{resource.price}
+            %td
+              = resource.created_at.strftime("%B, %d, %Y")
+            %td
+              - if resource.status == Course::PAID
+                %label.label.label-success
+                  = resource.status
+              - elsif resource.status == Course::CANCEL
+                %label.label.label-warning
+                  = resource.status
+              - else
+                %label.label.label-default
+                  = resource.status
+            %th
+              = link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, backend_course_path(resource), method: 'delete', data: {confirm: "Data #{@resource_name} successfully deleted!"}, class: 'btn btn-danger btn-xs'
+
+    = paginate @courses
+

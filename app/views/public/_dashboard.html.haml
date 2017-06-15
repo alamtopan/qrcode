@@ -1,0 +1,119 @@
+%header
+  %h2{align: 'center'} DASHBOARD SISWA
+%p{align: 'center'} Selamat Datang <b>#{current_user.username}</b> di halaman anda! #{link_to 'Logout', destroy_user_session_path, method: 'delete'}
+%hr
+.row
+  .col-md-4
+    .panel
+      .panel-body
+        .col-md-12
+          %center
+            = image_tag current_user.photo.url, class: 'img-circle avatar'
+            %br
+            %br
+        .col-md-12
+          .form-group
+            %h4 Data Pribadi
+            %hr
+          .form-group
+            <b>Nama Depan</b> <br>
+            = current_user.first_name
+          .form-group
+            <b>Nama Belakang</b> <br>
+            = current_user.last_name
+          .form-group
+            <b>Tanggal Lahir</b> <br>
+            = current_user.born
+          .form-group
+            <b>No.HP</b> <br>
+            = current_user.phone
+          .form-group
+            <b>Jenis Kelamin</b> <br>
+            = current_user.gender
+          .form-group
+            <b>Alamat</b> <br>
+            = current_user.address
+          .form-group
+            %br
+            %h4 Data Orangtua
+            %hr
+          .form-group
+            <b>Nama OrangTua</b> <br>
+            = current_user.parent_name
+          .form-group
+            <b>Kontak OrangTua</b> <br>
+            = current_user.parent_contact
+          .form-group
+            <b>Alamat OrangTua</b> <br>
+            = current_user.parent_address
+
+  .col-md-8
+    %h3 Kursus Dipilih
+    %hr
+    - @courses.each do |c|
+      = render 'public/modal_confirmation', c: c
+      .panel
+        .panel-body
+          .row
+            .col-xs-4
+              %center
+                %h4 
+                  = c.name
+                %small Kursus dipilih
+            .col-xs-4
+              %center
+                %h4 
+                  = c.schedule
+                %small Jadwal Kursus
+            .col-xs-4
+              %center
+                %h4 
+                  = c.status.titleize
+                %small Status
+            .col-xs-12
+              %hr
+              %center
+                %small Kode <b>#{c.code}</b> | Registrasi <b>#{c.created_at.strftime("%I:%M %B, %d, %Y")}</b> | Pembayaran <b>Rp.#{c.price}</b>
+
+                - unless c.status == Course::PAID
+                  %br
+                  %br
+                  .btn.btn-full.btn-success{'data-toggle'=>"modal", 'data-target'=>"#modal-confirmation-#{c.id}"} KONFIRMASI PEMBAYARAN
+    %br
+    %h3 Free Test Online
+    %hr
+    - @courses.each do |c|
+      - if c.english?
+        = render 'public/modal_test_english', c: c
+      - else
+        = render 'public/modal_test_it', c: c
+      .panel
+        .panel-body
+          .row
+            .col-xs-4
+              %center
+                %h4 
+                  = c.name
+                %small Test Dipilih
+            .col-xs-4
+              %center
+                %h4
+                  = c.result_test
+                %small Hasil Tes
+            .col-xs-4
+              %center
+                %h4
+                  = c.grade?
+                %small Klasifikasi
+            .col-xs-12
+              %hr
+              %small.pull-left.btn.btn-sm Daftar <b>#{c.created_at.strftime("%I:%M %B, %d, %Y")}</b>
+              - if c.result_test < 1
+                - if c.english?
+                  %small.pull-right.btn.btn-info.btn-sm{'data-toggle'=>"modal", 'data-target'=>"#modal-test-eng"} Mulai Kerjakan
+                - else
+                  %small.pull-right.btn.btn-info.btn-sm{'data-toggle'=>"modal", 'data-target'=>"#modal-test-it"} Mulai Kerjakan
+
+
+
+

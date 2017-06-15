@@ -5,6 +5,5 @@
       = link_to 'Back To List', backend_students_path, class: 'btn btn-info btn-xs pull-right'
     %hr
   .box-body.table-responsive
-    = form_for @student, url: backend_student_path, method: 'put' do |u|
-      = u.fields_for :profile_student do |f|
-        = render 'form', {f: f, u: u}
+    = form_for @student, url: backend_student_path, method: 'put' do |f|
+      = render 'form', {f: f}

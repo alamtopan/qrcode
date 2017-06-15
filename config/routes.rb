@@ -11,24 +11,30 @@ Rails.application.routes.draw do
     }
 
   root 'public#home'
+  post 'skill_test', to: 'students#skill_test', as: 'skill_test'
+  
+  resources :students
+  resources :confirmations
 
   namespace :backend do
     get "dashboard", to: 'home#dashboard', as: 'dashboard_admin'
     resources :admins
-    resources :teachers do
-      collection do
-        get :multiple_action
-      end
-    end
     resources :students do
       collection do
         get :multiple_action
         get :report
       end
     end
-    resources :attendances do
+    resources :courses do
       collection do
         get :multiple_action
+        get :report
+      end
+    end
+    resources :confirmations do
+      collection do
+        get :multiple_action
+        get :report
       end
     end
   end

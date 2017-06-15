@@ -4,39 +4,33 @@
       %br
       = javascript_include_tag "//www.google.com/jsapi", "chartkick"
       .well
-        %h4{align: 'center'} Statistik Attendance Students
-      = column_chart @attendances.per_year.group_by_month('attendances.created_at').count
+        %h4{align: 'center'} Statistik Pendaftaran Siswa
+      = column_chart @students.per_year.group_by_month('users.created_at').count
       %br
       %ul.today-datas.display-center
         %li
           .datas-text
             %b 
-              = @attendances.count_today
+              = @students.count_today
             %br 
-            Attendance Today
+            Hari Ini
         %li
           .datas-text
             %b 
-              = @attendances.count_week
+              = @students.count_week
             %br 
-            Attendance This Week
+            Minggu Ini
         %li
           .datas-text
             %b 
-              = @attendances.count_month
+              = @students.count_month
             %br 
-            Attendance This Month
+            Bulan Ini
         %li
           .datas-text
             %b 
-              = @attendances.count_year
+              = @students.count
             %br 
-            Attendance This Year
-        %li
-          .datas-text
-            %b 
-              = @attendances.count
-            %br 
-            Attendance till date
+            Keseluruhan
       .chart
         %canvas#number_visitors

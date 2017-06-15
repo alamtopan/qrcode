@@ -1,0 +1,65 @@
+<html>
+<body style="background: #f5f5f5; padding-top: 20px;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="max-width:600px !important; background: #fffffff; border:solid 1px #cccccc; margin:auto; display:table;">
+    <tr>
+      <td valign="top" id="templateBody" style= "background-color: #FFFFFF; border-top: 0; border-bottom: 2px solid #EAEAEA; padding-top: 0; padding-bottom: 9px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+          <tbody class="mcnTextBlockOuter">
+            <tr>
+              <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                  <tbody>
+                    <tr>
+                      <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+                        <h1 align='center' style='font-size:22px;'>Konfirmasi Pendaftaran Kursus No <%= @course.code %></h1>
+                        <br>
+                        <p><b>DATA DIRI ANDA:</b></p>
+                        <p>
+                          <ul>
+                            <li>Nama Lengkap: <b><%= @user.first_name %> <%= @user.last_name %></b></li>
+                            <li>Email: <b><%= @user.email %></b></li>
+                            <li>Jenis Kelamin: <b><%= @user.gender %></b></li>
+                            <li>No.HP: <b><%= @user.phone %></b></li>
+                            <li>Tanggal Lahir: <b><%= @user.born.strftime("%B, %d, %Y") %></b></li>
+                            <li>Alamat Lengkap: <b><%= @user.address %></b></li>
+                          </ul>
+                          <br>
+                        </p>
+                        <p><b>KURSUS DIPILIH:</b></p>
+                        <p>
+                          <ul>
+                            <li>Pilihan Kursus: <b><%= @course.name %></b></li>
+                            <li>Pilihan Jadwal: <b><%= @course.schedule %></b></li>
+                            <li>Waktu Daftar: <b><%= @course.created_at.strftime("%I:%M %B, %d, %Y") %></b></li>
+                            <li>TOTAL TAGIHAN: <b>Rp.<%= @course.price %></b></li>
+                          </ul>
+                          <br>
+                        </p>
+                        <p><b>SILAHKAN LANJUTKAN KE TAHAP BERIKUTNYA:</b></p>
+                        <p>
+                          <ol>
+                            <li>Silahkan lakukan pembayaran ke: <br><b>NO.REK 132356456564 (BANK BCA An.Kursus Online)</b></li>
+                            <li>Silahkan Login Dengan Akun Anda</li>
+                            <li>Lakukan Konfirmasi Pembayaran</li>
+                            <li>Silahkan Kerjakan Soal Test Yang di Pilih</li>
+                            <li>Anda Sudah Bisa Datang dan Memulai Kursus</li>
+                          </ol>
+                          <br>
+                        </p>
+                        <br>
+                        <%= link_to 'KONFIRMASI PEMBAYARAN', root_url, style: 'padding:15px; color:white; background:green; margin:auto; display:table; text-decoration: none;' %>
+                        <br>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr> 
+  </table>
+</body>
+</html>

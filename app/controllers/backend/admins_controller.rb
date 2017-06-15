@@ -2,33 +2,7 @@ class Backend::AdminsController < Backend::ApplicationController
   before_action :class_name
   before_filter :draw_password, only: :update
 
-  add_breadcrumb "Admins", :backend_admins_path
-
-  def index
-    @admins = collection.page(page).per(per_page)
-  end
-
-  def show
-    prepare_add_breadcrumb_action
-    resource
-  end
-
-  def new
-    prepare_add_breadcrumb_action
-    @admin = Admin.new
-  end
-
-  def create
-    @admin = Admin.new(params_permit)
-    @admin.type = "Admin"
-    @admin.confirmation_token = nil
-    @admin.confirmed_at = Time.now
-    if @admin.save
-      redirect_to backend_admins_path, notice: "Successfully saved #{@resource_name}"
-    else
-      redirect_to :back
-    end
-  end
+  add_breadcrumb "Admins", :backend_dashboard_admin_path
 
   def edit
     prepare_add_breadcrumb_action
@@ -39,17 +13,7 @@ class Backend::AdminsController < Backend::ApplicationController
     resource
 
     if @admin.update(params_permit)
-      redirect_to backend_admins_path, notice: "Successfully saved #{@resource_name}"
-    else
-      redirect_to :back
-    end
-  end
-
-  def destroy
-    resource
-
-    if @admin.destroy
-      redirect_to :back
+      redirect_to backend_dashboard_admin_path, notice: "Successfully saved #{@resource_name}"
     else
       redirect_to :back
     end
@@ -71,7 +35,7 @@ class Backend::AdminsController < Backend::ApplicationController
                                     :password, 
                                     :password_confirmation,
                                     :type,
-                                    :avatar
+                                    :photo
                                   )
     end
 

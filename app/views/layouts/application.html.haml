@@ -4,17 +4,9 @@
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags 
 
-  %body.devise-body
+  %body
     .container
-      .panel-container
-        %header
-          .col-md-6
-            .brand
-              = image_tag 'logo.png', style: 'height:40px;'
-              SMP NEGERI 11 SUKABUMI
-          .col-md-6
-            .date
-              #{Time.zone.now.strftime("%A, %d, %B, %Y")}
+      .panel-container    
         .col-md-12
         = flash_messages
         = yield

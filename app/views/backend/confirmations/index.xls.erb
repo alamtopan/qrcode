@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">No.</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Kode Invoice</Data></Cell>
+        <Cell><Data ss:Type="String">Pengirim</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Akun Bank</Data></Cell>
+        <Cell><Data ss:Type="String">Metode Pembayaran</Data></Cell>
+        <Cell><Data ss:Type="String">Nominal</Data></Cell>
+        <Cell><Data ss:Type="String">Tanggal Transfer</Data></Cell>
+        <Cell><Data ss:Type="String">Dibuat</Data></Cell>
+      </Row>
+    <% @collection.each_with_index do |resource, index| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= index+=1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.status %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.invoice_code %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.sender_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:user).try(:email) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:bank_account) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.try(:payment_method) %></Data></Cell>
+        <Cell><Data ss:Type="String">Rp. <%= resource.nominal %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.payment_date.strftime("%B, %d, %Y") if resource.payment_date.present? %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.created_at.strftime("%B, %d, %Y") %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

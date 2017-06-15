@@ -1,0 +1,231 @@
+.modal.fade{:role => "dialog", id: "modal-test-it"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title{align: 'center'} TEST PENGETAHUAN KOMPUTER
+      = form_for :test, url: skill_test_path, method: 'post' do |f|
+        .modal-body
+          = hidden_field_tag :test_id, c.id
+          / question 1
+          .col-xs-12 
+            .well
+              1. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question1, 'A', required: true
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question1, 'B', required: true
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question1, 'C', required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 2
+          .col-xs-12 
+            .well
+              2. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question2, 'A', required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question2, 'B', required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question2, 'C', required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 3
+          .col-xs-12 
+            .well
+              3. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question3, 'A', required: true  
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question3, 'B', required: true  
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question3, 'C', required: true  
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 4
+          .col-xs-12 
+            .well
+              4. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question4, 'A', required: true  
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question4, 'B', required: true  
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question4, 'C', required: true  
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 5
+          .col-xs-12 
+            .well
+              5. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question5, 'A' , required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question5, 'B' , required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question5, 'C' , required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 6
+          .col-xs-12 
+            .well
+              6. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question6, 'A' , required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question6, 'B' , required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question6, 'C' , required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 7
+          .col-xs-12 
+            .well
+              7. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question7, 'A' , required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question7, 'B' , required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question7, 'C' , required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 8
+          .col-xs-12 
+            .well
+              8. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question8, 'A' , required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question8, 'B' , required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question8, 'C' , required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 9
+          .col-xs-12 
+            .well
+              9. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question9, 'A' , required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question9, 'B' , required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question9, 'C' , required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+          / question 10
+          .col-xs-12 
+            .well
+              10. Question1 ?
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question10, 'A' , required: true 
+                %br Answare A
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question10, 'B' , required: true 
+                %br Answare B
+          .col-xs-4
+            .well
+              %center
+                = f.radio_button :question10, 'C' , required: true 
+                %br Answare C
+          .col-xs-12 
+            %hr
+
+        .modal-footer
+          = submit_tag 'FINISH', class: 'btn btn-success'

@@ -2,7 +2,7 @@
   %section.sidebar
     .user-panel
       .pull-left.image
-        = image_tag current_user.avatar.url(:thumb), class: 'img-circle'
+        = image_tag current_user.photo.url(:thumb), class: 'img-circle'
       .pull-left.info
         %p #{current_user.username}
         %a{:href => "#"}
@@ -12,35 +12,30 @@
       %li.header MENU
       %li.active
         = link_to '<i class="fa fa-link"></i> Dashboard'.html_safe, backend_dashboard_admin_path
-      %li{class: "treeview #{active_sidebar?(:attendances, :all)}"}
-        %a{:href => "#"}
-          %i.fa.fa-calendar
-          %span Data Attendances
-          %i.fa.fa-angle-left.pull-right
-        %ul.treeview-menu
-          %li
-            = link_to 'Input Data Attendances'.html_safe, new_backend_attendance_path
-          %li
-            = link_to 'List Attendances', backend_attendances_path
-      - if current_user.is_admin?
-        %li{class: "treeview #{active_sidebar?(:admins, :all)}"}
-          %a{:href => "#"}
-            %i.fa.fa-user-secret
-            %span Data Admins
-            %i.fa.fa-angle-left.pull-right
-          %ul.treeview-menu
-            %li
-              = link_to 'Input Data Admin'.html_safe, new_backend_admin_path
-            %li
-              = link_to 'List Admins', backend_admins_path
       %li{class: "treeview #{active_sidebar?(:students, :all)}"}
         %a{:href => "#"}
           %i.fa.fa-users
-          %span Data Students
+          %span Data Siswa
           %i.fa.fa-angle-left.pull-right
         %ul.treeview-menu
           %li
-            = link_to 'Input Data Student'.html_safe, new_backend_student_path
+            = link_to 'List Siswa', backend_students_path
+
+      %li{class: "treeview #{active_sidebar?(:courses, :all)}"}
+        %a{:href => "#"}
+          %i.fa.fa-bars
+          %span Data Register Kursus
+          %i.fa.fa-angle-left.pull-right
+        %ul.treeview-menu
           %li
-            = link_to 'List Students', backend_students_path
+            = link_to 'List Register Kursus', backend_courses_path
+
+      %li{class: "treeview #{active_sidebar?(:confirmations, :all)}"}
+        %a{:href => "#"}
+          %i.fa.fa-money
+          %span Data Konfirmasi
+          %i.fa.fa-angle-left.pull-right
+        %ul.treeview-menu
+          %li
+            = link_to 'List Konfirmasi', backend_confirmations_path
 

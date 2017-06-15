@@ -5,8 +5,7 @@ default: &default
 #database
 development:
   <<: *default
-  database: absensi_dev2
-
+  database: course_dev
 test:
   <<: *default
-  database: absensi_test2
+  database: course_test

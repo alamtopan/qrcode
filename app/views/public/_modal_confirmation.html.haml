@@ -1,0 +1,38 @@
+.modal.fade{:role => "dialog", id: "modal-confirmation-#{c.id}"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title{align: 'center'} FORM KONFIRMASI PEMBAYARAN
+      .modal-body
+        = form_for Confirmation.new, url: confirmations_path, method: 'post' do |f|
+          = f.hidden_field :course_id, value: c.id
+          .col-md-12
+            .form-group
+              = f.label 'No Invoice'
+              = f.text_field :invoice_code, value: c.code, class: 'form-control', required: true
+          .col-md-12
+            .form-group
+              = f.label 'Tanggal Transfer'
+              = f.date_field :payment_date, class: 'form-control', required: true
+          .col-md-12
+            .form-group
+              = f.label 'Nominal Transfer'
+              = f.number_field :nominal, class: 'form-control', required: true
+          .col-md-12
+            .form-group
+              = f.label 'Akun Bank'
+              = f.text_field :bank_account, class: 'form-control', required: true
+          .col-md-12
+            .form-group
+              = f.label 'Metode Pembayaran'
+              = f.select :payment_method, ['Internet Banking', 'SMS Banking','ATM Transfer','Setoran Tunai'], {prompt: 'Pilih Metode Pembayaran'}, {class: 'form-control', required: true}
+          .col-md-12
+            .form-group
+              = f.label 'Nama Pengirim'
+              = f.text_field :sender_name, class: 'form-control', required: true
+          .col-md-12
+            .form-group
+              = submit_tag 'SUBMIT', class: 'btn btn-lg btn-full btn-success', style: 'width:100%;'
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

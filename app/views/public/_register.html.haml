@@ -1,0 +1,122 @@
+%header
+  %h2{align: 'center'} PENDAFTARAN KURSUS ONLINE
+%p{align: 'center'} Anda Sudah Mempunyai Akun? Silahkan #{link_to 'Login', new_user_session_path}
+.panel
+  .panel-body
+    = form_for Student.new, url: students_path, method: 'post' do |f|
+      .col-md-6
+        .form-group
+          %br
+          %h3 Data Akun
+          %hr
+        .form-group
+          %em * 
+          = f.label :username
+          = f.text_field :username, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :email
+          = f.email_field :email, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :password
+          = f.password_field :password, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control', required: true
+        .form-group
+          %h3 Data Pribadi
+          %hr
+        .form-group
+          %em * 
+          = f.label :nama_depan
+          = f.text_field :first_name, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :nama_belakang
+          = f.text_field :last_name, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :tanggal_lahir
+          = f.date_field :born, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :no_hp
+          = f.number_field :phone, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :jenis_kelamin
+          = f.select :gender, ['Laki-Laki', 'Perempuan'], {prompt: 'Pilih Jenis Kelamin'}, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :alamat
+          = f.text_area :address, class: 'form-control', required: true
+        .form-group
+          %h3 Data Orangtua
+          %hr
+        .form-group
+          %em * 
+          = f.label :nama_orangtua
+          = f.text_field :parent_name, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :kontak_orangtua
+          = f.number_field :parent_contact, class: 'form-control', required: true
+        .form-group
+          %em * 
+          = f.label :alamat_orangtua
+          = f.text_area :parent_address, class: 'form-control', required: true
+      .col-md-6
+        %br
+        %br
+        .panel
+          .panel-body
+            .col-md-12
+              .form-group
+                %h4 Pilih Kursus
+                %hr
+
+            .col-md-12
+              %center
+                = image_tag f.object.photo.url(:thumb), class: 'img-circle avatar'
+                = f.file_field :photo, class: 'form-control avatar-input'
+                %br
+                %br
+            .col-md-6
+              .well
+                .form-group
+                  %center
+                    = radio_button_tag :course, 'Bahasa Inggris', required: true
+                    %br
+                    %b Bahasa Inggris
+            .col-md-6
+              .well
+                .form-group
+                  %center
+                    = radio_button_tag :course, 'Komputer', required: true
+                    %br
+                    %b Komputer
+
+            .col-md-12
+              .form-group
+                %h4 Pilih Jadwal Kursus
+                %hr
+            .col-md-6
+              .well
+                .form-group
+                  %center
+                    = radio_button_tag :schedule, "Senin - Rabu - Jum'at", required: true
+                    %br
+                    %b Senin - Rabu - Jum'at
+            .col-md-6
+              .well
+                .form-group
+                  %center
+                    = radio_button_tag :schedule, "Selasa - Kamis - Sabtu", required: true
+                    %br
+                    %b Selasa - Kamis - Sabtu
+
+            .col-md-12
+              .form-group
+                = submit_tag 'DAFTAR SEKARANG', class: 'btn btn-lg btn-full btn-success', style: 'width:100%;'

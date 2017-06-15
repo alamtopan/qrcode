@@ -6,7 +6,7 @@ class Backend::ApplicationController < ApplicationController
   add_breadcrumb "Dashboard", :backend_dashboard_admin_path
 
   def authenticate_admin!
-    unless current_user.present? && (current_user.is_admin? || current_user.is_teacher?)
+    unless current_user.present? && current_user.is_admin?
       redirect_to root_path, alert: "Can't Access This Page!"
     end
   end

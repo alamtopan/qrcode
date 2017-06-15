@@ -1,24 +1,34 @@
 class Student < User
   default_scope {where(type: 'Student')}
   
-  has_one :profile_student, foreign_key: 'user_id'
-  accepts_nested_attributes_for :profile_student
-  after_initialize :after_initialized
-
-  has_many :attendances, foreign_key: 'user_id'
-  scope :bonds, ->{eager_load(:profile_student)}
-
   include TheUser::StudentSearching
 
-  def get_barcode?
-    # script enkripsi barcode
-    if self.profile_student.present? && self.profile_student.nis.present?
-      RQRCode::QRCode.new("#{self.profile_student.nis}").to_img.resize(200, 200).to_data_url
-    end
+  def self.count_today
+    where("DATE(users.created_at) = DATE(?)", Time.zone.now).count
   end
 
-  private
-    def after_initialized
-      self.profile_student = ProfileStudent.new if self.profile_student.blank?
-    end
+  def self.count_week
+    today = Time.zone.now
+    where("DATE(users.created_at) >= DATE(?) AND DATE(users.created_at) <= DATE(?)", today.at_beginning_of_week, today.at_end_of_week).count
+  end
+
+  def self.count_month
+    today = Time.zone.now
+    where("DATE(users.created_at) >= DATE(?) AND DATE(users.created_at) <= DATE(?)", today.at_beginning_of_month, today.at_end_of_month).count
+  end
+
+  def self.count_year
+    today = Time.zone.now
+    where("DATE(users.created_at) >= DATE(?) AND DATE(users.created_at) <= DATE(?)", today.beginning_of_year, today.end_of_year).count
+  end
+
+  def self.per_year
+    today = Time.zone.now
+    where("DATE(users.created_at) >= DATE(?) AND DATE(users.created_at) <= DATE(?)", today.beginning_of_year, today.end_of_year)
+  end
+
+  def self.per_month
+    today = Time.zone.now
+    where("DATE(users.created_at) >= DATE(?) AND DATE(users.created_at) <= DATE(?)", today.at_beginning_of_month, today.at_end_of_month)
+  end
 end

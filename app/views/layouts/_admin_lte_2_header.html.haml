@@ -2,8 +2,7 @@
   %header.main-header
     %a.logo{:href => backend_dashboard_admin_path}
       %span.logo-lg
-        = image_tag 'logo.png', style: 'height:40px;'
-        SMP NEGERI 11
+        KURSUS ONLINE
     %nav.navbar.navbar-static-top{:role => "navigation"}
       %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
         %span.sr-only Toggle navigation
@@ -11,19 +10,16 @@
         %ul.nav.navbar-nav
           %li.dropdown.user.user-menu
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              = image_tag current_user.avatar.url(:thumb), class: 'user-image'
+              = image_tag current_user.photo.url(:thumb), class: 'user-image'
               %span.hidden-xs #{current_user.username}
             %ul.dropdown-menu
               %li.user-header
-                = image_tag current_user.avatar.url(:thumb), class: 'img-circle'
+                = image_tag current_user.photo.url(:thumb), class: 'img-circle'
                 %p
                   #{current_user.username} - Admin
                   %small Since #{current_user.created_at}
               %li.user-footer
                 .pull-left
-                  - unless current_user.is_admin?
-                    %a.btn.btn-default.btn-flat{:href => edit_backend_teacher_path(current_user)} Edit Account
-                  - else
-                    %a.btn.btn-default.btn-flat{:href => edit_backend_admin_path(current_user)} Edit Account
+                  %a.btn.btn-default.btn-flat{:href => edit_backend_admin_path(current_user)} Edit Account
                 .pull-right
                   = link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'btn btn-default btn-flat'
