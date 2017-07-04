@@ -25,6 +25,7 @@
         <Cell><Data ss:Type="String">Kontak Orangtua</Data></Cell>
         <Cell><Data ss:Type="String">Alamat Orangtua</Data></Cell>
         <Cell><Data ss:Type="String">Klasifikasi</Data></Cell>
+        <Cell><Data ss:Type="String">Nilai Test</Data></Cell>
       </Row>
     <% @collection.each_with_index do |resource, index| %>
       <Row>
@@ -46,6 +47,7 @@
         <Cell><Data ss:Type="String"><%= resource.try(:user).try(:parent_address) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= resource.try(:user).try(:parent_contact) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= resource.grade? %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.result_test %></Data></Cell>
       </Row>
     <% end %>
     </Table>

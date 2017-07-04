@@ -15,11 +15,11 @@ class Course < ActiveRecord::Base
   
 
   def english?
-    self.name = 'Bahasa Inggris'
+    self.name == 'Bahasa Inggris'
   end
 
   def computer?
-    self.name = 'Komputer'
+    self.name == 'Komputer'
   end
 
   def grade?

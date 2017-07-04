@@ -22,6 +22,8 @@
           %th Harga
           %th Tanggal Daftar
           %th Status
+          %th Hasil Test
+          %th Nilai Test
           %th{width: '10%'} Action
 
         - @courses.each do |resource|
@@ -50,6 +52,10 @@
               - else
                 %label.label.label-default
                   = resource.status
+            %td
+              = resource.grade?
+            %td
+              = resource.result_test
             %th
               = link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, backend_course_path(resource), method: 'delete', data: {confirm: "Data #{@resource_name} successfully deleted!"}, class: 'btn btn-danger btn-xs'
 

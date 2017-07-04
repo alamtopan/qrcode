@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
       @course.name = params[:course]
       @course.schedule = params[:schedule]
       @course.price = 1200000
+      byebug
       @course.save
     end
 
