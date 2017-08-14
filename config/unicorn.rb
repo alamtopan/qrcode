@@ -1,4 +1,4 @@
-root = "/home/qrcode/www/current"
+root = "/home/deploy/www/current"
 working_directory root
 
 pid               "#{root}/tmp/pids/unicorn.pid"
