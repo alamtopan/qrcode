@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
     @student = Student.new(params_permit)
     if @student.save
       prepare_course(params)
-      UserMailer.send_confirmation(@student, @course).deliver!
+      UserMailer.send_confirmation(@student, @course).deliver_now
       redirect_to root_path, notice: 'Anda Berhasil Terdaftar, Silahkan Cek Email Anda dan Lakukan Konfirmasi Pembayaran Segera!'
     else
       redirect_to root_path, alert: @student.errors.full_messages
