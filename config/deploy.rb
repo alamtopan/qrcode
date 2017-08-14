@@ -1,9 +1,9 @@
 lock '3.5.0'
 
-set :application, 'qrcode'
+set :application, 'course'
 set :repo_url, 'git@github.com:alamtopan/qrcode.git'
 set :scm, :git
-set :deploy_to, '/home/qrcode/www'
+set :deploy_to, '/home/course/www'
 
 set :format, :pretty
 set :log_level, :info
@@ -11,10 +11,10 @@ set :log_level, :info
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp vendor/bundle public/system public/uploads}
 
-set :rbenv_path, '/home/qrcode/.rbenv'
+set :rbenv_path, '/home/course/.rbenv'
 
 set :default_env, {
-   path: "/home/qrcode/.rbenv/shims:/home/qrcode/.rbenv/bin:$PATH"
+   path: "/home/course/.rbenv/shims:/home/course/.rbenv/bin:$PATH"
  }
 
 set :keep_releases, 3
