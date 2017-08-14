@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
       @course.user_id = @student.id
       @course.name = params[:course]
       @course.schedule = params[:schedule]
-      @course.price = 1200000
+      @course.price = 600000
       @course.save
     end
 

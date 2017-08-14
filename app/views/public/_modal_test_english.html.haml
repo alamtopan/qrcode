@@ -3,227 +3,227 @@
     .modal-content
       .modal-header
         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title{align: 'center'} TEST PENGETAHUAN BH.INGGRIS
+        %h4.modal-title{align: 'center'} TES PENGETAHUAN BAHASA INGGRIS
       = form_for :test, url: skill_test_path, method: 'post' do |f|
         .modal-body
           = hidden_field_tag :test_id, c.id
           / question 1
           .col-xs-12 
             .well
-              1. Question1 ?
+              1. Where ........ you born?
           .col-xs-4
             .well
               %center
                 = f.radio_button :question1, 'A', required: true
-                %br Answare A
+                %br Are
           .col-xs-4
             .well
               %center
                 = f.radio_button :question1, 'B', required: true
-                %br Answare B
+                %br Am
           .col-xs-4
             .well
               %center
                 = f.radio_button :question1, 'C', required: true 
-                %br Answare C
+                %br Were
           .col-xs-12 
             %hr
 
           / question 2
           .col-xs-12 
             .well
-              2. Question1 ?
+              2. I want to ......... your voice.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question2, 'A', required: true 
-                %br Answare A
+                %br Here
           .col-xs-4
             .well
               %center
                 = f.radio_button :question2, 'B', required: true 
-                %br Answare B
+                %br Hear
           .col-xs-4
             .well
               %center
                 = f.radio_button :question2, 'C', required: true 
-                %br Answare C
+                %br Ear
           .col-xs-12 
             %hr
 
           / question 3
           .col-xs-12 
             .well
-              3. Question1 ?
+              3. I have an ........... I like this fruit so much.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question3, 'A', required: true  
-                %br Answare A
+                %br Grape
           .col-xs-4
             .well
               %center
                 = f.radio_button :question3, 'B', required: true  
-                %br Answare B
+                %br Orange
           .col-xs-4
             .well
               %center
                 = f.radio_button :question3, 'C', required: true  
-                %br Answare C
+                %br Watermelon
           .col-xs-12 
             %hr
 
           / question 4
           .col-xs-12 
             .well
-              4. Question1 ?
+              4. Roy and Alex ............. my best friend ever.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question4, 'A', required: true  
-                %br Answare A
+                %br Also
           .col-xs-4
             .well
               %center
                 = f.radio_button :question4, 'B', required: true  
-                %br Answare B
+                %br Are
           .col-xs-4
             .well
               %center
                 = f.radio_button :question4, 'C', required: true  
-                %br Answare C
+                %br Is
           .col-xs-12 
             %hr
 
           / question 5
           .col-xs-12 
             .well
-              5. Question1 ?
+              5. Diana ........... a beautiful long hair.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question5, 'A' , required: true 
-                %br Answare A
+                %br Have
           .col-xs-4
             .well
               %center
                 = f.radio_button :question5, 'B' , required: true 
-                %br Answare B
+                %br Has
           .col-xs-4
             .well
               %center
                 = f.radio_button :question5, 'C' , required: true 
-                %br Answare C
+                %br Did
           .col-xs-12 
             %hr
 
           / question 6
           .col-xs-12 
             .well
-              6. Question1 ?
+              6. Today is Sunday, tomorrow is ...........
           .col-xs-4
             .well
               %center
                 = f.radio_button :question6, 'A' , required: true 
-                %br Answare A
+                %br Tuesday
           .col-xs-4
             .well
               %center
                 = f.radio_button :question6, 'B' , required: true 
-                %br Answare B
+                %br Wednesday
           .col-xs-4
             .well
               %center
                 = f.radio_button :question6, 'C' , required: true 
-                %br Answare C
+                %br Monday
           .col-xs-12 
             %hr
 
           / question 7
           .col-xs-12 
             .well
-              7. Question1 ?
+              7. My Sister feels drowsy ........... she has a long time fever.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question7, 'A' , required: true 
-                %br Answare A
+                %br So
           .col-xs-4
             .well
               %center
                 = f.radio_button :question7, 'B' , required: true 
-                %br Answare B
+                %br Until
           .col-xs-4
             .well
               %center
                 = f.radio_button :question7, 'C' , required: true 
-                %br Answare C
+                %br Because
           .col-xs-12 
             %hr
 
           / question 8
           .col-xs-12 
             .well
-              8. Question1 ?
+              8. My laptop is the ........... among others.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question8, 'A' , required: true 
-                %br Answare A
+                %br Best
           .col-xs-4
             .well
               %center
                 = f.radio_button :question8, 'B' , required: true 
-                %br Answare B
+                %br Better
           .col-xs-4
             .well
               %center
                 = f.radio_button :question8, 'C' , required: true 
-                %br Answare C
+                %br Good
           .col-xs-12 
             %hr
 
           / question 9
           .col-xs-12 
             .well
-              9. Question1 ?
+              9. This book is too ............
           .col-xs-4
             .well
               %center
                 = f.radio_button :question9, 'A' , required: true 
-                %br Answare A
+                %br Big
           .col-xs-4
             .well
               %center
                 = f.radio_button :question9, 'B' , required: true 
-                %br Answare B
+                %br Bigger
           .col-xs-4
             .well
               %center
                 = f.radio_button :question9, 'C' , required: true 
-                %br Answare C
+                %br Biggest
           .col-xs-12 
             %hr
 
           / question 10
           .col-xs-12 
             .well
-              10. Question1 ?
+              10. I ............ go to Washington D.C next week.
           .col-xs-4
             .well
               %center
                 = f.radio_button :question10, 'A' , required: true 
-                %br Answare A
+                %br Am going to
           .col-xs-4
             .well
               %center
                 = f.radio_button :question10, 'B' , required: true 
-                %br Answare B
+                %br Will
           .col-xs-4
             .well
               %center
                 = f.radio_button :question10, 'C' , required: true 
-                %br Answare C
+                %br Plans to
           .col-xs-12 
             %hr
 
